@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HeApp</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+   <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"%>
+
+  <%= csrf_meta_tags %>
+</head>
+<body>
+   <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/"><span> <span>Homesteader's Emporium</span><% if @user %>| <% end%></span></a>      
+            <a class="navbar-brand" href="/user"><span>Profile</span></a>
+        </div>
+        <div id="navbar">
+          <form class="navbar-form navbar-right">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Username">
+            </div>
+            
+            <a href="" class="btn btn-default">Search</a>
+            <a href="/logout" class="btn btn-default">Sign out</a>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+  <script>
+    window.fbAsyncInit = function() {
+      FB.init({  
+        appId      : '1643888345868772',
+        xfbml      : true,
+        version    : 'v2.4'
+      });
+    };
+
+    (function(d, s, id){
+       var js, fjs = d.getElementsByTagName(s)[0];
+       if (d.getElementById(id)) {return;}
+       js = d.createElement(s); js.id = id;
+       js.src = "//connect.facebook.net/en_US/sdk.js";
+       fjs.parentNode.insertBefore(js, fjs);
+     }(document, 'script', 'facebook-jssdk'));
+  </script>
+  <div
+    class="fb-like"
+    data-share="true"
+    data-width="450"
+    data-show-faces="true">
+  </div>
+
+<%= yield %>
+
+</body>
+</html>
